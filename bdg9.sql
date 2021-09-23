@@ -67,3 +67,15 @@ create table alerta(
 create table alextra(
     axttra int,
     axtale int );
+   
+ALTER TABLE usuario ADD CONSTRAINT PK_usu PRIMARY KEY (usuId);
+ALTER TABLE departamento ADD CONSTRAINT PK_dep PRIMARY KEY (depId);
+ALTER TABLE ciudad ADD CONSTRAINT PK_ciu PRIMARY KEY (ciuId);
+ALTER TABLE oficina ADD CONSTRAINT PK_ofi PRIMARY KEY (ofiId);
+ALTER TABLE tipoTrx ADD CONSTRAINT PK_tip PRIMARY KEY (tipId);
+ALTER TABLE respuesta ADD CONSTRAINT PK_res PRIMARY KEY (resId);
+ALTER TABLE transaccion ADD CONSTRAINT PK_tra PRIMARY KEY (traId);
+ALTER TABLE dependencia ADD CONSTRAINT PK_dpe PRIMARY KEY (dpeId);
+ALTER TABLE categoria ADD CONSTRAINT PK_cat PRIMARY KEY (catId);
+ALTER TABLE alerta ADD CONSTRAINT PK_ale PRIMARY KEY (aleId);
+ALTER TABLE alextra ADD CONSTRAINT PK_axt PRIMARY KEY (axtTra, axtale);
