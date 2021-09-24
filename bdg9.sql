@@ -9,13 +9,20 @@ drop table if exists tipotrx;
 drop table if exists respuesta;
 drop table if exists categoria;
 drop table if exists dependencia;
+drop table if exists rol;
 
 create table usuario(
     usuId int,
     usuNom varchar(40), 
     usuApe varchar(40),
     usuEmail varchar(60),
-    usuPass varchar(20) );
+    usuPass varchar(20),
+    usuRol int );
+
+create table rol(
+    rolId serial,
+    rolNom varchar(40), 
+    rolDes varchar(40));
 
 Create table departamento(
     depId int,
@@ -69,6 +76,7 @@ create table alextra(
     axtale int );
    
 ALTER TABLE usuario ADD CONSTRAINT PK_usu PRIMARY KEY (usuId);
+ALTER TABLE rol ADD CONSTRAINT PK_rol PRIMARY KEY (rolId);
 ALTER TABLE departamento ADD CONSTRAINT PK_dep PRIMARY KEY (depId);
 ALTER TABLE ciudad ADD CONSTRAINT PK_ciu PRIMARY KEY (ciuId);
 ALTER TABLE oficina ADD CONSTRAINT PK_ofi PRIMARY KEY (ofiId);
@@ -79,3 +87,15 @@ ALTER TABLE dependencia ADD CONSTRAINT PK_dpe PRIMARY KEY (dpeId);
 ALTER TABLE categoria ADD CONSTRAINT PK_cat PRIMARY KEY (catId);
 ALTER TABLE alerta ADD CONSTRAINT PK_ale PRIMARY KEY (aleId);
 ALTER TABLE alextra ADD CONSTRAINT PK_axt PRIMARY KEY (axtTra, axtale);
+
+ALTER TABLE usuario ADD CONSTRAINT FK_usurol FOREIGN KEY (usuRol) REFERENCES rol (rolid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE ciudad ADD CONSTRAINT FK_ciudep FOREIGN KEY (ciuDep) REFERENCES departamento (depid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE oficina ADD CONSTRAINT FK_oficiu FOREIGN KEY (oficiu) REFERENCES ciudad (ciuid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE transaccion ADD CONSTRAINT FK_traofiori FOREIGN KEY (traofiori) REFERENCES oficina (ofiid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE transaccion ADD CONSTRAINT FK_traofides FOREIGN KEY (traofides) REFERENCES oficina (ofiid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE transaccion ADD CONSTRAINT FK_tratip FOREIGN KEY (tratip) REFERENCES tipotrx (tipid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE transaccion ADD CONSTRAINT FK_trares FOREIGN KEY (trares) REFERENCES respuesta (resid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE alerta ADD CONSTRAINT FK_aledpe FOREIGN KEY (aledpe) REFERENCES dependencia (dpeid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE alerta ADD CONSTRAINT FK_alecat FOREIGN KEY (alecat) REFERENCES categoria (catid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE alextra ADD CONSTRAINT FK_axttra FOREIGN KEY (axttra) REFERENCES transaccion (traid) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE alextra ADD CONSTRAINT FK_axtale FOREIGN KEY (axtale) REFERENCES alerta (aleid) ON UPDATE CASCADE ON DELETE RESTRICT;
