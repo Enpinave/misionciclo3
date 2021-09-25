@@ -1200,3 +1200,6 @@ insert into oficina values('core3', 'OficinaX');
 insert into oficina values('enruta', 'OficinaX');
 insert into oficina values('core1', 'OficinaX');
 insert into oficina values('core2', 'OficinaX');
+
+insert into rol (rolNom) values('Administrador');
+insert into rol (rolNom) values('Analista');
