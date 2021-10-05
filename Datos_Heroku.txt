@@ -1,0 +1,22 @@
+Heroku rotates credentials periodically and updates applications where this database is attached.
+
+Host
+ec2-54-166-167-192.compute-1.amazonaws.com
+
+Database
+d25oc9vp73mrbr
+
+User
+bcupuuqvynkofd
+
+Port
+5432
+
+Password
+f0fd66d8c7f755f1cbccf5aae9dbd192d042c1d6c66d4c9b87f6415a52587811
+
+URI
+postgres://bcupuuqvynkofd:f0fd66d8c7f755f1cbccf5aae9dbd192d042c1d6c66d4c9b87f6415a52587811@ec2-54-166-167-192.compute-1.amazonaws.com:5432/d25oc9vp73mrbr
+
+Heroku CLI
+heroku pg:psql postgresql-shaped-07320 --app misusuarios
